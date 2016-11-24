@@ -1,3 +1,8 @@
+/* Heading Shadow */
+.heading-shadow {
+	text-shadow: 2px 2px 8px #444;
+}
+
 /* Shared
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .button {
@@ -32,9 +37,9 @@
 /* Values
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .values {
-	/*background-image: url('../images/values-bg.jpg');
-	background-size: cover;*/
-	background : #ffb9c9;
+	background-image: url("images/cover.JPG");
+	background-size: cover;
+	background : #f1807a;
 	color: #fff;
 	padding-bottom: 5rem;
 }
