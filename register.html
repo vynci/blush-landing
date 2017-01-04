@@ -32,77 +32,146 @@
 	<link rel="icon" type="image/png" href="images/favicon.png">
 
 </head>
-<body>
+<body>        
 	<div style="margin: 20px 10%">
 		<h3 style="text-align: center;">Artist Registration</h3>
 		<h6 style="text-align: center;">Please fill up the form below</h6>
 		<br>
-		<form>
+		<form id="frm1">
 			<div class="row">
 				<div class="six columns">
-					<label for="exampleEmailInput">First Name</label>
-					<input class="u-full-width" type="text" placeholder="Jane" id="exampleEmailInput">
+					<label for="firstName">First Name</label>
+					<input class="u-full-width" type="text" placeholder="Jane" id="firstName">
 				</div>
 				<div class="six columns">
-					<label for="exampleEmailInput">Last Name</label>
-					<input class="u-full-width" type="text" placeholder="Doe" id="exampleEmailInput">
+					<label for="lastName">Last Name</label>
+					<input class="u-full-width" type="text" placeholder="Doe" id="lastName">
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="six columns">
-					<label for="exampleEmailInput">Primary Address</label>
-					<input class="u-full-width" type="text" placeholder="Cebu City" id="exampleEmailInput">
+					<label for="primaryAddress">Primary Address</label>
+					<input class="u-full-width" type="text" placeholder="Cebu City" id="primaryAddress">
 				</div>
 				<div class="six columns">
-					<label for="exampleEmailInput">Secondary Address (Optional)</label>
-					<input class="u-full-width" type="text" placeholder="Makati City" id="exampleEmailInput">
+					<label for="secondaryAddress">Secondary Address (Optional)</label>
+					<input class="u-full-width" type="text" placeholder="Makati City" id="secondaryAddress">
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="six columns">
-					<label for="exampleEmailInput">Email</label>
-					<input class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
+					<label for="emailAddress">Email Address</label>
+					<input class="u-full-width" type="email" placeholder="test@mailbox.com" id="emailAddress">
 				</div>
 				<div class="six columns">
-					<label for="exampleEmailInput">Contact Number</label>
-					<input class="u-full-width" type="number" placeholder="09272326087" id="exampleEmailInput">
+					<label for="contactNumber">Contact Number</label>
+					<input class="u-full-width" type="number" placeholder="09272326087" id="contactNumber">
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="six columns">
-					<label for="exampleEmailInput">Personal Website / Blog (Optional)</label>
-					<input class="u-full-width" type="email" placeholder="mywebsite.com" id="exampleEmailInput">
+					<label for="personalWebsite">Personal Website / Blog (Optional)</label>
+					<input class="u-full-width" type="email" placeholder="mywebsite.com" id="personalWebsite">
 				</div>
 				<div class="six columns">
-					<label for="exampleEmailInput">Social Media</label>
-					<input class="u-full-width" type="number" placeholder="facebook.com/makeupbyjhoiee" id="exampleEmailInput">
+					<label for="socialMedia">Social Media (facebook, instagram, etc.)</label>
+					<input class="u-full-width" type="text" placeholder="facebook.com/makeupbyjhoiee" id="socialMedia">
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="six columns">
-					<label for="exampleMessage">Certifications / Awards</label>
-					<textarea class="u-full-width" placeholder="List your awards here" id="exampleMessage"></textarea>
+					<label for="certification">Certifications / Awards (Optional)</label>
+					<textarea class="u-full-width" placeholder="List your certifications/awards here" id="certification"></textarea>
 				</div>
 				<div class="six columns">
-					<label for="exampleEmailInput">Years of Experience in Makeup and/or hairstyling</label>
-					<input class="u-full-width" type="number" placeholder="3" min="0" max="99" id="exampleEmailInput">
+					<label for="yearsOfExperience">Years of Experience in Makeup and/or hairstyling</label>
+					<input class="u-full-width" type="number" placeholder="3" min="0" max="99" id="yearsOfExperience">
 				</div>
 			</div>
 
-			<label for="exampleMessage">Tell us about yourself</label>
-			<textarea class="u-full-width" placeholder="I'm an awesome artist from cebu city!" id="exampleMessage"></textarea>
+			<label for="aboutYourself">Tell us about yourself</label>
+			<textarea class="u-full-width" placeholder="I'm an awesome artist from cebu city!" id="aboutYourself"></textarea>
+            <br>
+            <span class="label-body">Signing up signifies that you have read and agree to the <a href="terms-of-service.html">Terms of Service and Privacy Policy</a></span>
+            <br><br>
 			<!-- <label class="example-send-yourself-copy">
 				<input type="checkbox">
 				<span class="label-body">Send a copy to yourself</span>
 			</label> -->
-			<input class="button-primary" type="submit" value="Submit">
+			<input class="button-primary" type="button" value="Submit" id="submitButton">
 		</form>
+
+        <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+            <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2 style="text-align: center;">Submission Successful!</h2>
+            </div>
+            <div class="modal-body">
+                <p>We are now screening the information in your registration form. We will contact you as soon as possible for the next step.</p>
+                <p>Thank you so much for submitting.</p>
+            </div>
+            <!--<div class="modal-footer">
+                <input class="button-primary" type="button" value="Ok" id="footerCloseButton">
+            </div>-->
+            </div>
+
+        </div>
 
 	</div>
 
+    <script>
+        var modal = document.getElementById('myModal');
+        var closeModal = document.getElementsByClassName("close")[0];     
+        var submitButton = document.getElementById("submitButton"); 
+        var footerCloseButton = document.getElementById("footerCloseButton"); 
+
+        submitButton.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+        }
+        
+        footerCloseButton.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        
+        function submitForm() {
+            var modal = document.getElementById('myModal');
+
+            var userForm = {
+                firstName : document.getElementById("firstName").value,
+                lastName : document.getElementById("lastName").value,
+                primaryAddress : document.getElementById("primaryAddress").value,
+                secondaryAddress : document.getElementById("secondaryAddress").value,
+                emailAddress : document.getElementById("emailAddress").value,
+                contactNumber : document.getElementById("contactNumber").value,
+                personalWebsite : document.getElementById("personalWebsite").value,
+                socialMedia : document.getElementById("socialMedia").value,
+                certification : document.getElementById("certification").value,
+                aboutYourself : document.getElementById("aboutYourself").value
+            }
+            
+            console.log(userForm);
+            modal.style.display = "block";
+            
+        }
+
+    </script>
 </body>
 </html>
