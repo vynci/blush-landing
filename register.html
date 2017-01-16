@@ -26,13 +26,14 @@
 	<!-- Scripts
 	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="lib/parse.min.js"></script>
 
 	<!-- Favicon
 	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 	<link rel="icon" type="image/png" href="images/favicon.png">
 
 </head>
-<body>        
+<body>
 	<div style="margin: 20px 10%">
 		<h3 style="text-align: center;">Artist Registration</h3>
 		<h6 style="text-align: center;">Please fill up the form below</h6>
@@ -128,18 +129,23 @@
 
     <script>
         var modal = document.getElementById('myModal');
-        var closeModal = document.getElementsByClassName("close")[0];     
-        var submitButton = document.getElementById("submitButton"); 
-        var footerCloseButton = document.getElementById("footerCloseButton"); 
+        var closeModal = document.getElementsByClassName("close")[0];
+        var submitButton = document.getElementById("submitButton");
+        var footerCloseButton = document.getElementById("footerCloseButton");
+
+				Parse.initialize("myAppId", "myJavascriptKey");
+				Parse.serverURL = 'https://muse-rest-api.herokuapp.com/parse';
+				// Parse.serverURL = 'http://localhost:1337/parse';
+				console.log(Parse);
 
         submitButton.onclick = function() {
-            modal.style.display = "block";
+						submitForm();
         }
 
         closeModal.onclick = function() {
             modal.style.display = "none";
         }
-        
+
         footerCloseButton.onclick = function() {
             modal.style.display = "none";
         }
@@ -150,7 +156,7 @@
                 modal.style.display = "none";
             }
         }
-        
+
         function submitForm() {
             var modal = document.getElementById('myModal');
 
@@ -164,12 +170,21 @@
                 personalWebsite : document.getElementById("personalWebsite").value,
                 socialMedia : document.getElementById("socialMedia").value,
                 certification : document.getElementById("certification").value,
-                aboutYourself : document.getElementById("aboutYourself").value
+                aboutYourself : document.getElementById("aboutYourself").value,
+								yearsOfExperience : document.getElementById("yearsOfExperience").value
             }
-            
+
             console.log(userForm);
-            modal.style.display = "block";
-            
+
+						Parse.Cloud.run('request-register', userForm, {
+							success: function(results) {
+								// ratings should be 4.5
+								console.log(results);
+								modal.style.display = "block";
+							},
+							error: function(error) {
+							}
+						});
         }
 
     </script>
