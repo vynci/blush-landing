@@ -139,7 +139,9 @@
 				console.log(Parse);
 
         submitButton.onclick = function() {
-						submitForm();
+						if(document.getElementById("firstName").value && document.getElementById("lastName").value && document.getElementById("emailAddress").value && document.getElementById("contactNumber").value){
+							submitForm();
+						}					
         }
 
         closeModal.onclick = function() {
